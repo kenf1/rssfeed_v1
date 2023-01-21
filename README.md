@@ -1,10 +1,9 @@
-# About
+### RSS Feed
 
-This is repository hosts the UI and content of an RSS feed reader.
+Automatically updates + shows content from specified RSS feeds based on user-defined schedule.
 
-## Links and references
+### Change Feed, Links or Logo
 
-- [How does it work?](https://github.com/osmoscraft/osmosfeed#osmosfeed)
-- [File an issue about the template](https://github.com/osmoscraft/osmosfeed-template)
-- [File an issue about the tool](https://github.com/osmoscraft/osmosfeed)
-- [Lastest documentation](https://github.com/osmoscraft/osmosfeed)
+For instructions on how to change the feed, links, or logo: view the [Instructions](instructions.md) documentation.
+
+Created with [osmosfeed template](https://github.com/osmoscraft/osmosfeed-template) with [Nord](https://github.com/onnyyonn/feed) theme.

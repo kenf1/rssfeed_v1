@@ -1,31 +1,34 @@
-name: Build site on schedule or main branch update
+name: Build site #scheduled + manually
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+  
   schedule:
-    # Adjust refresh schedule here. By default, it runs once per day.
-    # Syntax reference: https://docs.github.com/en/actions/reference/events-that-trigger-workflows#schedule
-    # Recommended tool: https://crontab.guru/
-    - cron: "0 0 * * *"
+    - cron: "0 5 * * *" #https://crontab.guru/
 
 jobs:
-  build:
+  Generate-Site:
+    permissions:
+      contents: write
+    
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.4
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
         with:
-          node-version: "16"
-      - name: Install dependencies
-        run: npm i
-      - name: Build the feed
-        run: npm run build
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          deno-version: vx.x.x
+      
+      - name: Run Lume
+        run: deno task build
+      
+      - name: Deploy site to gh-pages    
+        uses: peaceiris/actions-gh-pages@v3        
+        with:         
+             github_token: ${{ secrets.GITHUB_TOKEN }}          
+             publish_dir: ./dist          
+             user_name: 'github-actions[bot]'         
+             user_email: 'github-actions[bot]@users.noreply.github.com'
