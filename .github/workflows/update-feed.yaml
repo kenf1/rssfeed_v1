@@ -4,7 +4,10 @@ on:
   workflow_dispatch:
   
   schedule:
-    - cron: "0 5 * * *" #https://crontab.guru/
+    - cron: "30 7 * * *"
+    #https://crontab.guru/
+    #https://www.utctime.net/utc-time-zone-converter
+      #needs to be in military time
 
 jobs:
   Generate-Site:

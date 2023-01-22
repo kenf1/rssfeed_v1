@@ -21,7 +21,7 @@ const article = (entry) => {
 
 export default async function (_) {
   const feed = await fetchFeed(
-    "https://old.reddit.com/r/tabletennis.rss",
+    "https://old.reddit.com/r/tabletennis/new.rss",
     "https://github.com/osmoscraft/osmosfeed/releases.atom",
   )
 
